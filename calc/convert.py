@@ -1,15 +1,22 @@
 import math
 
 
+def run(mph):
+    converted_mph = seconds_formatter(mph_to_mins_per_mile(mph))
+    return converted_mph
+
+
 def mph_to_mins_per_mile(mph):
-    minutes = math.floor((60/ mph))
-    seconds = round((60/mph - minutes) * 60)
+    minutes = math.floor((60 / mph))
+    seconds = round((60 / mph - minutes) * 60)
     time_in_seconds = minutes_to_seconds(minutes, seconds)
     return time_in_seconds
+
 
 def minutes_to_seconds(minutes, seconds):
     seconds = seconds + (minutes * 60)
     return seconds
+
 
 def seconds_formatter(seconds):
     seconds = seconds % (24 * 3600)
@@ -19,5 +26,4 @@ def seconds_formatter(seconds):
     seconds %= 60
 
     mph_time: str = ("%d:%02d:%02d" % (hour, minutes, seconds))
-    print(mph_time)
     return mph_time
